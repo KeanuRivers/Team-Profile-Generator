@@ -65,3 +65,79 @@ function addEngineer() {
         userChoice();
     });
 }
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "Input",
+            name: "Name",
+            message: "Enter Intern's Name"
+        },
+        {
+            type: "Input",
+            name: "id",
+            message: "Enter Intern ID"
+        },
+        {
+            type: "Input",
+            name: "Email",
+            message: "Enter Intern Email"
+        },
+        {
+            type: "Input",
+            name: "School",
+            message: "Enter School name"
+        }
+    ]).then(function (response) {
+        const intern = new Intern(response.Name, response.id,  response.Email, response.School);
+        var obj = {
+            role: intern.getRole(),
+            name: intern.getName(),
+            email: intern.getEmail(),
+            id: intern.getId(),
+            School: intern.getSchool()
+        }
+        employeeList.push(obj);
+        console.log(employeeList);
+
+        userChoice();
+    });
+}
+
+function addManager() {
+    inquirer.prompt([
+        {
+            type: "Input",
+            name: "Name",
+            message: "Enter Manager's Name"
+        },
+        {
+            type: "Input",
+            name: "id",
+            message: "Enter Manager ID"
+        },
+        {
+            type: "Input",
+            name: "Email",
+            message: "Enter Manager Email"
+        },
+        {
+            type: "Input",
+            name: "OfficeNumber",
+            message: "Enter Office Number"
+        }
+    ]).then(function (response) {
+        const manager = new Manager(response.Name, response.id,  response.Email, response.OfficeNumber);
+        var obj = {
+            role: manager.getRole(),
+            name: manager.getName(),
+            email: manager.getEmail(),
+            id: manager.getId(),
+            OfficeNumber: manager.getOfficeNumber()
+        }
+        employeeList.push(obj);
+        console.log(employeeList);
+
+        userChoice();
+    });
+}
